@@ -1,18 +1,21 @@
 ---
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
+import MainLayout from "../../layout/MainLayout.astro";
 
 const allProjects: CollectionEntry<"projects">[] =
   await getCollection("projects");
 ---
 
-<h1>All the Projects</h1>
-<ul>
-  {
-    allProjects.map((project) => (
-      <li>
-        <a href={`/projects/${project.slug}`}>{project.data.title}</a>
-      </li>
-    ))
-  }
-</ul>
+<MainLayout>
+  <h1>All the Projects</h1>
+  <ul>
+    {
+      allProjects.map((project) => (
+        <li>
+          <a href={`/projects/${project.slug}`}>{project.data.title}</a>
+        </li>
+      ))
+    }
+  </ul>
+</MainLayout>
